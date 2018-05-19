@@ -125,6 +125,7 @@ window.onload=function(){
 			var pX=flag?ev.touches[0].clientX:ev.clientX;
 			var pY=flag?ev.touches[0].clientY:ev.clientY;
 			oLineStyle.style.display='none';
+			flag=true;
 			if(penOn){
 				oCtx.lineWidth=lw;
 				oCtx.beginPath();
