@@ -113,7 +113,7 @@ window.onload=function(){
 				oCtx.strokeStyle=color;
 				oShowLw.style.background=color;
 			}
-			newImg.src='../drawingboard/images/color.png';
+			newImg.src='../drawingboard/images/color.png';//为了githubpages预览
 			oColor.className='';
 		}
 		
