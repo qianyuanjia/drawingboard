@@ -113,7 +113,7 @@ window.onload=function(){
 				oCtx.strokeStyle=color;
 				oShowLw.style.background=color;
 			}
-			newImg.src='../images/color.png';
+			newImg.src='//i.loli.net/2018/05/19/5affdf6b90753.png';
 			oColor.className='';
 		}
 		
