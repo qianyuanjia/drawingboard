@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>手机画板</title>
+	<link rel="stylesheet" href="./css/style.css">
+	<script src="./js/main.js"></script>
+	<script src="//at.alicdn.com/t/font_672767_w1ofcbpbo9f3whfr.js"></script>
+</head>
+<body>
+	<canvas id="can"></canvas>
+	<div id="erase"></div>
+	<ul class="tools">
+		<li title="画笔">
+			<svg class="icon active1">
+			    <use xlink:href="#icon-pen"></use>
+			</svg>
+		</li>
+		<li title="橡皮擦">
+			<svg class="icon">
+			    <use xlink:href="#icon-eraser"></use>
+			</svg>
+		</li>
+		<li title="清空画板">
+			<svg class="icon">
+			    <use xlink:href="#icon-cc-trash"></use>
+			</svg>
+		</li>
+		<li title="保存画板为图片">
+			<svg class="icon">
+			    <use xlink:href="#icon-tupian"></use>
+			</svg>
+		</li>
+	</ul>
+	<button id="setLw">
+		选择画笔粗细
+		<ul id="lineStyle">
+			<li><span class="line"></span></li>
+			<li><span class="line"></span></li>
+			<li><span class="line"></span></li>
+			<li><span class="line"></span></li>
+			<li><span class="line"></span></li>
+			<li><span class="line"></span></li>
+		</ul>
+	</button>
+	<div class="show_lw">
+		<span class="line"></span>
+	</div>
+	<img src="./images/color.png" alt="color" id="color">
+</body>
+</html>

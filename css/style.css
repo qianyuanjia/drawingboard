@@ -1,0 +1,153 @@
+body{
+	margin: 0;
+	overflow: hidden;
+}
+ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+#can{
+	background: #fff;
+	touch-action: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+}
+.icon {
+	 width: 1em; height: 1em;
+	 vertical-align: -0.15em;
+	 fill: currentColor;
+	 overflow: hidden; 
+}
+
+.tools{
+	position: fixed;
+	left: 0;
+	top: 0;
+	padding: 5px;
+}
+.tools li{
+	display: inline-block;
+	margin: 4px;
+}
+
+.tools li svg{
+	fill: #000;
+	width: 1.6em;
+	height: 1.6em;
+	transition: all 0.3s;
+}
+.tools li svg.active1{
+	fill:red;
+	transform:scale(1.2);
+}
+.tools li svg.active2{
+	animation: blink 0.3s;
+}
+@keyframes blink{
+	0%{
+		transform:scale(1);
+		fill:#000;
+	}
+	80%{
+		transform:scale(1.2);
+		fill:red;
+	}
+	100%{
+		transform:scale(1);
+		fill:#000;
+	}
+}
+
+#erase{
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: rgba(100,100,100,0.4);
+	display: none;
+}
+
+#setLw{
+	position: fixed;
+	top: 10px;
+	right: 56px;
+	height: 26px;
+	background: orange;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	width: 92px;
+}
+#setLw ul{
+	position: absolute;
+	top:27px;
+	left: 0px;
+	width: 100%;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	display: none;
+	background: #fff;
+}
+#setLw ul li{
+	height: 20px;
+	border-bottom: 1px solid #ccc;
+	line-height: 20px;
+}	
+#setLw ul li:last-child{
+	border: none;
+}
+#setLw ul li .line{
+	display: inline-block;
+	background: #000;
+	width: 50%;
+	vertical-align: middle;
+}
+#setLw ul li:nth-of-type(1) .line{
+	height: 2px;
+}
+#setLw ul li:nth-of-type(2) .line{
+	height: 3px;
+}
+#setLw ul li:nth-of-type(3) .line{
+	height: 4px;
+}
+#setLw ul li:nth-of-type(4) .line{
+	height: 5px;
+}
+#setLw ul li:nth-of-type(5) .line{
+	height: 6px;
+}
+#setLw ul li:nth-of-type(6) .line{
+	height: 7px;
+}
+
+.show_lw{
+	position: fixed;
+	width: 40px;
+	height: 24px;
+	border: 1px solid #ccc;
+	top:10px;
+	right: 10px;
+	line-height: 24px;
+	text-align: center;
+}
+.show_lw .line{
+	display: inline-block;
+	height: 2px;
+	background: #000;
+	width: 50%;
+	vertical-align: middle;
+}
+
+#color{
+	position: fixed;
+	left: 6px;
+	top:50px;
+	width: 40px;
+	border-radius: 50%;
+}
+#color.active{
+	width: 100px;
+}
