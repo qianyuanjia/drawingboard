@@ -32,7 +32,8 @@ window.onload=function(){
 				setTimeout(function(){
 					_this.children[0].classList.remove('active2');
 				},300);
-				oCtx.clearRect(0,0,oCan.width,oCan.height);
+				oCtx.fillStyle="#fff";
+				oCtx.fillRect(0,0,oCan.width,oCan.height);
 				aTools[0].click();
 			}
 		}else if(i==3){
@@ -42,23 +43,21 @@ window.onload=function(){
 				setTimeout(function(){
 					_this.children[0].classList.remove('active2');
 				},300);
-				//由于画布其他部分是透明的，在保存之前在画布上盖一个白色矩形
-				//用组合类型xor使得原有内容不会被覆盖
-				oCtx.save();
-				oCtx.globalCompositeOperation="xor";
-				oCtx.fillStyle="#fff";
-				oCtx.fillRect(0,0,oCan.width,oCan.height);
+				
 				var oA=document.createElement('a');
 				oA.href=oCan.toDataURL('image/png');
 				oA.download="mypic";
 				oA.click();
-				oCtx.restore();
-				oCtx.clearRect(0,0,oCan.width,oCan.height);
+				oCtx.fillStyle="#fff";
+				oCtx.fillRect(0,0,oCan.width,oCan.height);
 			}
 		}
 	}
 	//根据窗口尺寸动态调整画布大小
 	setCanSize(oCan);
+	//初始化窗口，填充白色背景
+	oCtx.fillStyle="#fff";
+	oCtx.fillRect(0,0,oCan.width,oCan.height);
 	//根据特性选择相应的触发事件，实现画笔功能以及橡皮擦功能。
 	if(oCan.ontouchstart === null){
 		drawAction(['touchstart','touchmove','touchend'],true);
@@ -114,6 +113,7 @@ window.onload=function(){
 				oShowLw.style.background=color;
 			}
 			newImg.src='../drawingboard/images/color.png';//为了githubpages预览
+			// newImg.src='../images/color.png';//本地测试
 			oColor.className='';
 		}
 		
@@ -129,10 +129,11 @@ window.onload=function(){
 				oCtx.beginPath();
 				oCtx.moveTo(pX,pY);
 			}else{
+				oCtx.fillStyle="#fff";
 				oErase.style.display='block';
 				oErase.style.left=pX-oErase.offsetWidth*0.5+'px';
 				oErase.style.top=pY-oErase.offsetHeight*0.5+'px';
-				oCtx.clearRect(pX-eraseSize*0.5,pY-eraseSize*0.5,eraseSize,eraseSize);
+				oCtx.fillRect(pX-eraseSize*0.5,pY-eraseSize*0.5,eraseSize,eraseSize);
 			}	
 			document['on'+doArr[1]]=function(ev){
 				var ev= ev || window.event;
@@ -144,7 +145,7 @@ window.onload=function(){
 				}else{
 					oErase.style.left=pX-oErase.offsetWidth*0.5+'px';
 					oErase.style.top=pY-oErase.offsetHeight*0.5+'px';
-					oCtx.clearRect(pX-eraseSize*0.5,pY-eraseSize*0.5,eraseSize,eraseSize);
+					oCtx.fillRect(pX-eraseSize*0.5,pY-eraseSize*0.5,eraseSize,eraseSize);
 				}
 				return false;
 			}
