@@ -113,7 +113,7 @@ window.onload=function(){
 				oCtx.strokeStyle=color;
 				oShowLw.style.background=color;
 			}
-			newImg.src='//../images/color.png';
+			newImg.src='../images/color.png';
 			oColor.className='';
 		}
 		
