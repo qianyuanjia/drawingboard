@@ -79,6 +79,7 @@ ul{
 	border: none;
 	border-radius: 4px;
 	width: 92px;
+	cursor: pointer;
 }
 #setLw ul{
 	position: absolute;

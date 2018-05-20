@@ -9,7 +9,7 @@ window.onload=function(){
 	//选择工具，画笔or橡皮擦
 	var penOn=true;
 	//橡皮擦尺寸
-	var eraseSize=20;
+	var eraseSize=30;
 	//画笔粗细
 	var lw=2;
 	for(var i=0;i<aTools.length;i++){
@@ -68,16 +68,16 @@ window.onload=function(){
 	//选择画笔的粗细
 	var oBtn=document.getElementById('setLw');
 	var oLineStyle=document.getElementById('lineStyle');
-	var flag=true;
+	var lwFlag=true;
 	var aLi=oLineStyle.getElementsByTagName('li');
 	var oShowLw=document.querySelector('.show_lw .line');
 	oBtn.onclick=function(){
-		if(flag){
+		if(lwFlag){
 			oLineStyle.style.display='block';
 		}else{
 			oLineStyle.style.display='none';
 		}
-		flag=!flag;
+		lwFlag=!lwFlag;
 	}
 	for(var i=0;i<aLi.length;i++){
 		aLi[i].index=i;
@@ -89,32 +89,37 @@ window.onload=function(){
 	}
 
 	//画笔取色
+	var newImg=new Image();
+	var newCan=document.createElement('canvas');
+	var newCtx=newCan.getContext('2d');
+	newImg.onload=function(){
+		newCan.width=newImg.width;
+		newCan.height=newImg.height;
+		newCtx.drawImage(this,0,0,newCan.width,newCan.height);
+	}
+	//newImg.src='../drawingboard/images/color.png';//为了githubpages预览
+	 newImg.src='../images/color.png';//本地测试
+
 	var oColor=document.getElementById('color');
 	oColor.onclick=function(ev){
 		if(oColor.className==''){
 			oColor.className='active';
 
 		}else{
-			var newImg=new Image();
-			var newCan=document.createElement('canvas');
+			
 			var ev= ev || window.event;
 			var pX=ev.clientX-this.offsetLeft;
 			var pY=ev.clientY-this.offsetTop;
-			newImg.onload=function(){
-				var newCtx=newCan.getContext('2d');
-				newCan.width=newImg.width;
-				newCan.height=newImg.height;
-				newCtx.drawImage(this,0,0,newCan.width,newCan.height);
-
-				var oImgData=newCtx.getImageData(pX,pY,1,1);
-				var data=oImgData.data;
-				var color='rgba('+data[0]+','+data[1]+','+data[2]+','+data[3]/100+')';
-				oCtx.strokeStyle=color;
-				oShowLw.style.background=color;
-			}
-			newImg.src='../drawingboard/images/color.png';//为了githubpages预览
-			// newImg.src='../images/color.png';//本地测试
+			
+			var oImgData=newCtx.getImageData(pX,pY,1,1);
+			var data=oImgData.data;
+			var color='rgba('+data[0]+','+data[1]+','+data[2]+','+data[3]/100+')';
+			oCtx.strokeStyle=color;
+			oShowLw.style.background=color;
+				
 			oColor.className='';
+			aTools[0].click();
+			penOn=true;
 		}
 		
 	}
@@ -125,7 +130,7 @@ window.onload=function(){
 			var pX=flag?ev.touches[0].clientX:ev.clientX;
 			var pY=flag?ev.touches[0].clientY:ev.clientY;
 			oLineStyle.style.display='none';
-			flag=true;
+			lwFlag=true;
 			if(penOn){
 				oCtx.lineWidth=lw;
 				oCtx.beginPath();
