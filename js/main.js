@@ -131,6 +131,7 @@ window.onload=function(){
 			var pY=flag?ev.touches[0].clientY:ev.clientY;
 			oLineStyle.style.display='none';
 			lwFlag=true;
+			oColor.className='';
 			if(penOn){
 				oCtx.lineWidth=lw;
 				oCtx.beginPath();
