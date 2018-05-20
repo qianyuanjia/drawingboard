@@ -97,8 +97,8 @@ window.onload=function(){
 		newCan.height=newImg.height;
 		newCtx.drawImage(this,0,0,newCan.width,newCan.height);
 	}
-	//newImg.src='../drawingboard/images/color.png';//为了githubpages预览
-	 newImg.src='../images/color.png';//本地测试
+	newImg.src='../drawingboard/images/color.png';//为了githubpages预览
+	 // newImg.src='../images/color.png';//本地测试
 
 	var oColor=document.getElementById('color');
 	oColor.onclick=function(ev){
